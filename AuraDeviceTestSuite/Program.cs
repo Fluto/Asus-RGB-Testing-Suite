@@ -12,7 +12,7 @@ namespace AuraDeviceTestSuite
 {
     class Program
     {
-
+        private static int VersionIncrement = 2;
         private static void Main(string[] args)
         {
             Directory.CreateDirectory(FolderLoc);
@@ -31,7 +31,7 @@ namespace AuraDeviceTestSuite
         {
             PrintLine($@"
 *****************
-{DateTime.Now.ToString(CultureInfo.InvariantCulture)}
+{DateTime.Now.ToString(CultureInfo.InvariantCulture)} v{VersionIncrement}
 *****************
 Sup, welcome to the Aura test suite.
 This program will run some tests, check your devices 
@@ -266,28 +266,41 @@ What Update per second would you like this device to update at?
         {
             Console.Clear();
             PrintLine("Setting all colors...");
-            if (method == AuraMethod.AuraDev && syncOption == SynchronousOptionInput.Synchronous)
-                AuraDev.PlayRainbowEffectSync(GetUps(upsOption));
-            if (method == AuraMethod.AuraDev && syncOption == SynchronousOptionInput.Asynchronous)
-                AuraDev.PlayRainbowEffectAsync(GetUps(upsOption));
-            if (method == AuraMethod.AuraSdk && syncOption == SynchronousOptionInput.Synchronous)
-                AuraSync.PlayRainbowEffectSync(GetUps(upsOption));
-            if (method == AuraMethod.AuraSdk && syncOption == SynchronousOptionInput.Asynchronous)
-                AuraSync.PlayRainbowEffectAsync(GetUps(upsOption));
+            if (method == AuraMethod.AuraDev )
+            {
+                if (syncOption == SynchronousOptionInput.Synchronous)
+                    AuraDev.PlayRainbowEffectSync(GetUps(upsOption));
+                else
+                    AuraDev.PlayRainbowEffectAsync(GetUps(upsOption));
+            }
+            if (method == AuraMethod.AuraSdk)
+            {
+                if (syncOption == SynchronousOptionInput.Synchronous)
+                    AuraSync.PlayRainbowEffectSync(GetUps(upsOption));
+                else
+                    AuraSync.PlayRainbowEffectAsync(GetUps(upsOption));
+            }
         }
 
         private static void PlayRandomEffect(AuraMethod method, SynchronousOptionInput syncOption, UpsOptionInput upsOption)
         {
             Console.Clear();
             PrintLine("Setting all colors...");
-            if (method == AuraMethod.AuraDev && syncOption == SynchronousOptionInput.Synchronous)
-                AuraDev.PlayRandomEffectSync(GetUps(upsOption));
-            if (method == AuraMethod.AuraDev && syncOption == SynchronousOptionInput.Asynchronous)
-                AuraDev.PlayRandomEffectAsync(GetUps(upsOption));
-            if (method == AuraMethod.AuraSdk && syncOption == SynchronousOptionInput.Synchronous)
-                AuraDev.PlayRandomEffectSync(GetUps(upsOption));
-            if (method == AuraMethod.AuraSdk && syncOption == SynchronousOptionInput.Asynchronous)
-                AuraDev.PlayRandomEffectAsync(GetUps(upsOption));
+            if (method == AuraMethod.AuraDev)
+            {
+                if (syncOption == SynchronousOptionInput.Synchronous)
+                    AuraDev.PlayRandomEffectSync(GetUps(upsOption));
+                else
+                    AuraDev.PlayRandomEffectAsync(GetUps(upsOption));
+            }
+
+            if (method == AuraMethod.AuraSdk)
+            {
+                if (syncOption == SynchronousOptionInput.Synchronous)
+                    AuraSync.PlayRandomEffectSync(GetUps(upsOption));
+                else
+                    AuraSync.PlayRandomEffectAsync(GetUps(upsOption));
+            }
 
         }
 

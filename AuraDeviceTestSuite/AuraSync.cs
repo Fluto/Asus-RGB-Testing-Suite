@@ -147,7 +147,10 @@ namespace AuraDeviceTestSuite
 
             Console.Clear();
             PrintLine("Playing rainbow effect. Press ENTER to cancel");
-            do ; while ((!Console.KeyAvailable || Console.ReadKey().Key != ConsoleKey.Enter));
+            do
+            {
+                Thread.Sleep(InputTimeout);
+            } while ((!Console.KeyAvailable || Console.ReadKey().Key != ConsoleKey.Enter));
 
             RunAsync = false;
             PrintLine("Stopping threads...");
@@ -192,7 +195,10 @@ namespace AuraDeviceTestSuite
 
             Console.Clear();
             PrintLine("Playing rainbow effect. Press ENTER to cancel");
-            do; while ((!Console.KeyAvailable || Console.ReadKey().Key != ConsoleKey.Enter));
+            do
+            {
+                Thread.Sleep(InputTimeout);
+            } while ((!Console.KeyAvailable || Console.ReadKey().Key != ConsoleKey.Enter));
 
             RunAsync = false;
             PrintLine("Stopping threads...");

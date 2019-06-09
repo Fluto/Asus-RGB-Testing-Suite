@@ -148,7 +148,7 @@ Height:                 {auraDevice.Height}
             {
                 if (stopwatch.ElapsedMilliseconds < ups)
                     continue;
-
+                
                 stopwatch.Restart();
                 foreach (IAuraDevice device in allDevices)
                 {
@@ -203,7 +203,10 @@ Height:                 {auraDevice.Height}
 
             Console.Clear();
             PrintLine("Playing rainbow effect. Press ENTER to cancel");
-            do ; while ((!Console.KeyAvailable || Console.ReadKey().Key != ConsoleKey.Enter));
+            do
+            {
+                Thread.Sleep(InputTimeout);
+            } while ((!Console.KeyAvailable || Console.ReadKey().Key != ConsoleKey.Enter));
 
             RunAsync = false;
             PrintLine("Stopping threads...");
@@ -247,7 +250,10 @@ Height:                 {auraDevice.Height}
 
             Console.Clear();
             PrintLine("Playing rainbow effect. Press ENTER to cancel");
-            do; while ((!Console.KeyAvailable || Console.ReadKey().Key != ConsoleKey.Enter));
+            do
+            {
+                Thread.Sleep(InputTimeout);
+            } while ((!Console.KeyAvailable || Console.ReadKey().Key != ConsoleKey.Enter));
 
             RunAsync = false;
             PrintLine("Stopping threads...");

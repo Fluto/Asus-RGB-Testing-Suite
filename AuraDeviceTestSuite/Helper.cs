@@ -13,6 +13,7 @@ namespace AuraDeviceTestSuite
         public static string FolderLoc = @"logs\";
         public static string MainLogFileName = @"log_";
         public static int RainbowSpeed = 5000;
+        public static int InputTimeout = 500;
 
         private static StreamWriter mainLogFile;
         public static StreamWriter MainLogFile => mainLogFile ?? (mainLogFile = new StreamWriter(File.Open(FolderLoc + MainLogFileName + DateTime.Now.ToFileTime() + ".txt", FileMode.Append)));
